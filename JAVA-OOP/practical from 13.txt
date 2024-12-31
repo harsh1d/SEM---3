@@ -1,0 +1,24 @@
+13.  Aim for point class program
+14. Aim for complex no program Write a program the concept of class , object, methods
+15. Aim for publication program Write a program to explain concept of single inheritance
+16. Write a program to explain concept of multilevel inheritance
+
+
+
+Practical 13 
+ Aim for point class program
+Write a program to explain the concept of class and object using point class
+
+Practical 14    
+Aim for complex no program
+Write a program to explain the concept of class , object, methods. Write add, subtract, multiply and division methods in  COmplex class
+
+Practical 15   
+ Aim for publication program
+Write a program to explain concept of single inheritance
+
+Practical 16    
+Aim : Write a program to explain concept of multilevel inheritance
+
+Practical 17    
+Aim : Write a program to explain concept of multiple  inheritance using interface
