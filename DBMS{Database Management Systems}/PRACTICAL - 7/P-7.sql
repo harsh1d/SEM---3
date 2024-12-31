@@ -1,0 +1,94 @@
+CREATE DATABASE P7;
+
+SHOW DATABASES;
+
+USE P7;
+
+CREATE TABLE SALESMAN (SALESMAN_ID INT,NAME VARCHAR(50),CITY VARCHAR(50),COMISSION DECIMAL(4,2));
+
+INSERT INTO SALESMAN(SALESMAN_ID,NAME,CITY,COMISSION)
+VALUES(5001,"JAMES HOOK","NEW YORK",0.15),
+(5002,"NAIL KNIT","PARIS",0.13),
+(5005,"PIT ALEX","LONDON",0.11),
+(5006,"MC LYON","PARIS",0.14),
+(5003,"LAUSON HEN",NULL,0.12),
+(5007,"PAUL ADAM","ROME",0.13);
+
+DROP TABLE SALESMAN;
+SELECT * FROM SALESMAN;
+
+
+
+CREATE TABLE CUSTOMER (CUSTOMER_ID INT,CUSTOMER_NAME VARCHAR(50),CITY VARCHAR(50),GRADE INT,SALESMAN_ID INT);
+
+INSERT INTO CUSTOMER(CUSTOMER_ID,CUSTOMER_NAME,CITY,GRADE,SALESMAN_ID)
+VALUES(3002,"NICK RIMANDO","NEW YORK",100,5001),
+(3005,"GRAHAM ZUSI","CALIFONIA",200,5002),
+(3001,"BRAD GUZAN","LONDON",NULL,NULL),
+(3004,"FABIAN JOHNS","PARIS",300,5006),
+(3007,"BRAD DARVIS","NEW YORK",200,5001),
+(3009,"GEOFF CAMERON","BERLIN",100,NULL),
+(3008,"JULIAN GREEN","LONDON",300,5002),
+(3003,"JOZY ALTIDOR","MOSCOW",200,5007);
+
+
+
+DROP TABLE CUSTOMER;
+SELECT * FROM CUSTOMER;
+
+
+
+
+
+CREATE TABLE ORDER_TABLE (ORDER_NO INT,PURCH_AMT DECIMAL(10,2),ORDER_DATE DATE,CUSTOMER_ID INT,SALESMAN_ID INT);
+
+INSERT INTO ORDER_TABLE(ORDER_NO,PURCH_AMT,ORDER_DATE,CUSTOMER_ID,SALESMAN_ID)
+VALUES(70001,150.5,"2016-10-05",3005,5002),
+(70009,270.65,"2016-09-10",3001,NULL),
+(70002,65.26,"2016-10-05",3002,5001),
+(70004,110.5,"2016-08-17",3009,NULL),
+(70007,948.5,"2016-09-10",3005,5002),
+(70005,2400.6,"2016-07-27",3007,5001),
+(70008,5760,"2016-09-10",3002,5001),
+(70010,1983.43,"2016-10-10",3004,5006),
+(70003,2480.4,"2016-10-10",3009,NULL),
+(70012,250.45,"2016-06-27",3008,5002),
+(70011,75.29,"2016-08-17",3003,5007);
+
+DROP TABLE ORDER_TABLE;
+SELECT * FROM ORDER_TABLE;
+
+Q-1. Display name and commission for all the salesmen
+SELECT NAME, COMISSION FROM SALESMAN;
+
+Q-2. Retrieve salesman id of all salesmen from orders table without any repeats
+SELECT DISTINCT SALESMAN_ID FROM ORDER_TABLE;
+
+Q-3. Display names and city of salesman, who belongs to the city of Paris
+SELECT NAME, CITY FROM SALESMAN WHERE CITY = "PARIS";
+
+Q-4. Display all the information for those customers with a grade of 200
+SELECT * FROM CUSTOMER WHERE GRADE = 200;
+
+Q-5. Display the order number, order date and the purchase amount for order(s) which will be delivered by the salesman with ID 5001
+SELECT ORDER_NO, ORDER_DATE, PURCH_AMT FROM ORDER_TABLE WHERE SALESMAN_ID = 5001;
+
+Q-6. Show the winner of the 1971 prize for Literature [WRONG QUESTION]
+SELECT winner
+FROM nobel_prizes
+WHERE year = 1971 AND category = 'Literature';
+
+Q-6. Display all the customers, who are either belongs to the city New York or not had a grade above 100.
+SELECT * FROM CUSTOMER WHERE CITY = 'NEW YORK' OR GRADE <= 100;
+
+Q-7. Find those salesmen with all information who gets the commission within a range of 0.12 and 0.14.
+SELECT * FROM SALESMAN WHERE COMISSION BETWEEN 0.12 AND 0.14;
+
+Q-8. Find all those customers with all information whose names are ending with the letter 'n'.
+SELECT * FROM CUSTOMER WHERE CUSTOMER_NAME LIKE '%n';
+
+Q-9. Find those salesmen with all information whose name containing the 1st character is 'N' and the 4th character is 'l' and rests may be any character.
+SELECT * FROM SALESMAN WHERE NAME LIKE 'N__l%';
+
+Q-10. Find that customer with all information who does not get any grade except NULL.
+SELECT * FROM CUSTOMER WHERE GRADE IS NULL;
