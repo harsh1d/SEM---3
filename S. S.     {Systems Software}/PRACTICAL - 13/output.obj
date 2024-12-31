@@ -1,0 +1,15 @@
+0000 section .data
+0004 hello db 'Hello,
+000C section .text
+0010 global _start
+0018 _start:
+001C ; Write the
+0020 mov eax, 4
+0024 mov ebx, 1
+0028 mov ecx, hello
+002C mov edx, 13
+0030 int 0x80 ;
+0038 ; Exit the
+003C mov eax, 1
+0040 xor ebx, ebx
+0044 int 0x80 ;
