@@ -1,0 +1,126 @@
+Data Definition Language (DDL)
+CREATE TABLE: Creates a new table.
+
+sql
+Copy code
+CREATE TABLE table_name (
+    column1 datatype constraints,
+    column2 datatype constraints,
+    ...
+);
+ALTER TABLE: Modifies an existing table (e.g., adding, modifying, or dropping columns).
+
+sql
+Copy code
+ALTER TABLE table_name
+ADD column_name datatype;
+
+ALTER TABLE table_name
+MODIFY column_name new_datatype;
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+DROP TABLE: Deletes an existing table and all its data.
+
+sql
+Copy code
+DROP TABLE table_name;
+RENAME TABLE: Renames an existing table.
+
+sql
+Copy code
+RENAME TABLE old_table_name TO new_table_name;
+TRUNCATE TABLE: Removes all rows from a table, but the table structure remains.
+
+sql
+Copy code
+TRUNCATE TABLE table_name;
+Data Manipulation Language (DML)
+INSERT INTO: Inserts new rows into a table.
+
+sql
+Copy code
+INSERT INTO table_name (column1, column2, ...)
+VALUES (value1, value2, ...);
+UPDATE: Modifies existing rows in a table.
+
+sql
+Copy code
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+DELETE: Removes rows from a table.
+
+sql
+Copy code
+DELETE FROM table_name
+WHERE condition;
+SELECT: Retrieves data from a table.
+
+sql
+Copy code
+SELECT column1, column2, ...
+FROM table_name
+WHERE condition;
+Data Control Language (DCL)
+GRANT: Gives a user permissions to access a database.
+
+sql
+Copy code
+GRANT privilege ON table_name TO user;
+REVOKE: Removes a user's permissions.
+
+sql
+Copy code
+REVOKE privilege ON table_name FROM user;
+Transaction Control Language (TCL)
+COMMIT: Saves all changes made during the current transaction.
+
+sql
+Copy code
+COMMIT;
+ROLLBACK: Undoes all changes made during the current transaction.
+
+sql
+Copy code
+ROLLBACK;
+SAVEPOINT: Sets a savepoint within a transaction.
+
+sql
+Copy code
+SAVEPOINT savepoint_name;
+RELEASE SAVEPOINT: Releases a savepoint within a transaction.
+
+sql
+Copy code
+RELEASE SAVEPOINT savepoint_name;
+SET TRANSACTION: Sets the characteristics of the current transaction.
+
+sql
+Copy code
+SET TRANSACTION [READ WRITE | READ ONLY];
+Indexes and Keys
+CREATE INDEX: Creates an index on a table.
+
+sql
+Copy code
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+DROP INDEX: Deletes an index.
+
+sql
+Copy code
+DROP INDEX index_name;
+ALTER TABLE ADD CONSTRAINT: Adds constraints like primary keys, foreign keys, unique, check, etc.
+
+sql
+Copy code
+ALTER TABLE table_name
+ADD CONSTRAINT constraint_name PRIMARY KEY (column1, column2, ...);
+
+ALTER TABLE table_name
+ADD CONSTRAINT constraint_name FOREIGN KEY (column_name) REFERENCES other_table (column_name);
+
+ALTER TABLE table_name
+ADD CONSTRAINT constraint_name UNIQUE (column_name);
+These commands cover most of the typical operations you would perform on tables in a SQL database.

@@ -1,0 +1,42 @@
+DELETE A ROW 
+
+<--IMP-->ALTER TABLE TableName DROP COLUMN ColumnName;
+
+
+Data Definition Language (DDL) Commands
+These commands are used to define, alter, and manage database objects such as tables, indexes, and constraints.
+
+CREATE TABLE: Creates a new table.
+
+sql
+Copy code
+CREATE TABLE TableName (
+    Column1 DataType Constraints,
+    Column2 DataType Constraints,
+    ...
+);
+ALTER TABLE: Modifies an existing table.
+
+Add a column:
+sql
+Copy code
+ALTER TABLE TableName ADD ColumnName DataType Constraints;
+Modify a column:
+sql
+Copy code
+ALTER TABLE TableName MODIFY ColumnName NewDataType Constraints;
+Drop a column:
+sql
+Copy code
+ALTER TABLE TableName DROP COLUMN ColumnName;
+DROP TABLE: Deletes an existing table.
+
+sql
+Copy code
+DROP TABLE TableName;
+RENAME TABLE: Renames an existing table.
+
+sql
+Copy code
+RENAME TABLE OldTableName TO NewTableName;
+``

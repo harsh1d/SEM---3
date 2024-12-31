@@ -1,0 +1,238 @@
+VIVA QUESTIONS:
+1)  Can you sort a column using a column alias?
+{
+    Ans: [
+        Yes, you can sort a column using a column alias, but only in the ORDER BY clause. The WHERE clause cannot reference column aliases.
+    ]
+
+    Eg: [
+        SELECT salary*12 AS annual_salary
+        FROM employees
+        ORDER BY annual_salary;
+    ]
+}
+2)  Is a NULL value same as zero or a blank space? If not then what is the difference?
+{
+    Ans: [
+        No, NULL is not the same as zero or blank space. NULL represents the absence of a value or unknown value. Zero is a definite numeric value, and a blank space is an actual character. NULL cannot be compared using = or !=.
+    ]
+}
+3)  If a column value taking part in an arithmetic expression is NULL, then the result obtained would be NULL?
+{
+    Ans: [
+        Yes, if any column value in an arithmetic expression is NULL, the result will be NULL.
+    ]
+
+    Eg: [
+        SELECT 5 + NULL; -- Results in NULL
+    ]
+}
+4)  If a table contains duplicate rows, does a query result display the duplicate values by default? How can you eliminate duplicate rows from a query result?
+{
+    Ans: [
+        Yes, by default, SQL displays duplicate rows. To eliminate duplicates, use the DISTINCT keyword
+    ]
+
+    Eg: [
+        SELECT DISTINCT column_name FROM table_name;
+    ]
+}
+5)  Say True or False. Give explanation if false: The DISTINCT keyword allows a function consider only non-duplicate values
+{
+    Ans: [
+        True. The DISTINCT keyword ensures only unique values are considered when using aggregate functions.
+    ]
+
+    Eg: [
+        SELECT COUNT(DISTINCT column_name) FROM table_name;
+    ]
+}
+6)  Which function returns the remainder in a division operation?
+{
+    Ans: [
+        The MOD function or % operator returns the remainder in division:
+    ]
+
+    Eg: [
+        SELECT MOD(10,3);  -- Returns 1
+        SELECT 10 % 3;     -- Returns 1
+    ]
+}
+7)  What is the purpose of the NVL function?
+{
+    Ans: [
+        In MySQL, IFNULL function (equivalent to Oracle's NVL) replaces NULL values with a specified value
+    ]
+
+    Eg: [
+        SELECT IFNULL(column_name, 'default_value') FROM table_name;
+    ]
+}
+8) COUNT(*) returns the number of columns in a table.
+{
+    Ans: [
+        False. COUNT() returns the number of rows in a table, not columns.
+    ]
+}
+9) How do you copy rows from one table to another?
+{
+    Ans: [
+        To copy rows from one table to another
+    ]
+
+    Eg: [
+        INSERT INTO target_table
+        SELECT * FROM source_table;
+    ]
+}
+10) You want to display a result query from joining two tables with 20 and 10 rows respectively. Erroneously you forget to write the WHERE clause. What would be the result?
+{
+    Ans: [
+        Without a WHERE clause in a join between tables of 20 and 10 rows, you'll get a Cartesian product of 200 rows (20 × 10).
+    ]
+}
+11) What is the difference between cross joins and natural joins?
+{
+    Ans: [
+        Differences:
+        • Cross Join: Produces Cartesian product (all possible combinations)
+        • Natural Join: Automatically joins tables based on columns with matching names
+    ]
+}
+12) What is the purpose of the group functions in SQL? Give some examples of group functions.
+{
+    Ans: [
+        Group functions (aggregate functions) perform calculations on sets of rows:
+        • COUNT(): Counts rows
+        • SUM(): Adds values
+        • AVG(): Calculates average
+        • MAX(): Finds maximum value
+        • MIN(): Finds minimum value
+    ]
+}
+13) Say True or False. Give explanation if False. Group functions cannot be nested.
+{
+    Ans: [
+        False. Group functions can be nested in MySQL:
+    ]
+
+    Eg: [
+        SELECT MAX(COUNT(*))
+        FROM table_name
+        GROUP BY column_name;
+    ]
+}
+14) A multiple row subquery returns more than one row from the inner SELECT statement.
+{
+    Ans: [
+        True. Multiple row subqueries return more than one row from the inner SELECT statement.
+    ]
+
+    Eg: [
+        -- Find employees who earn more than the average salary in any department
+        SELECT name
+        FROM employees
+        WHERE salary > ANY (
+            SELECT AVG(salary)
+            FROM employees
+            GROUP BY department_id
+        );
+    ]
+}
+15) Multiple column subqueries return more than one column from the inner SELECT statement.
+{
+    Ans: [
+        True. Multiple column subqueries return more than one column from the inner SELECT statement.
+    ]
+
+    Eg: [
+        -- Find employees whose salary and department match any manager's salary and department
+        SELECT *
+        FROM employees
+        WHERE (salary, department_id) IN (
+            SELECT salary, department_id
+            FROM employees
+            WHERE job_title = 'Manager'
+        );
+    ]
+}
+16) What are the various multiple row comparison operators in SQL?
+{
+    Ans: [
+        Multiple row comparison operators in MySQL:
+        • IN
+        • ANY
+        • ALL
+        • EXISTS
+        • NOT IN
+        • NOT EXISTS
+    ]
+
+    Eg: [
+        -- IN operator
+        SELECT * FROM employees
+        WHERE department_id IN (10, 20, 30);
+
+        -- ANY operator
+        SELECT * FROM employees
+        WHERE salary > ANY (
+            SELECT salary FROM employees WHERE department_id = 10
+        );
+
+        -- ALL operator
+        SELECT * FROM employees
+        WHERE salary > ALL (
+            SELECT salary FROM employees WHERE department_id = 10
+        );
+
+        -- EXISTS operator
+        SELECT * FROM departments d
+        WHERE EXISTS (
+            SELECT 1 FROM employees e
+            WHERE e.department_id = d.department_id
+        );
+    ]
+}
+17) You can use a subquery in an INSERT statement.
+{
+    Ans: [
+        True. Subqueries can be used in INSERT statements:
+    ]
+
+    Eg: [
+        INSERT INTO table1
+        SELECT * FROM table2
+        WHERE condition;
+    ]
+}
+18) What is an Index in SQL?
+{
+    Ans: [
+        An index is a database structure that improves data retrieval performance by providing quick access paths to rows. It's similar to a book's index and helps speed up SELECT queries but can slow down INSERT and UPDATE operations.
+    ]
+
+    Eg: [
+        -- Create an index on the email column
+        CREATE INDEX idx_email ON employees(email);
+
+        -- Create a composite index on multiple columns
+        CREATE INDEX idx_name_dept ON employees(first_name, department_id);
+
+        -- Show existing indexes on a table
+        SHOW INDEX FROM employees;
+
+        -- Drop an index
+        DROP INDEX idx_email ON employees;
+    ]
+}
+19) Write an SQL query to find names of employee start with 'A'?
+{
+    Ans: [
+        SELECT queries but can slow down INSERT and UPDATE operations. To find employee names starting with 'A':
+    ]
+
+    Eg: [
+        SELECT * FROM employee
+        WHERE name LIKE 'A%';
+    ]
+}
