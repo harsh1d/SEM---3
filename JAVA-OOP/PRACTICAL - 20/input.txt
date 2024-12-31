@@ -1,0 +1,7 @@
+Dear Students, 
+AIMS for practical 18 ,19, 20  are as follows
+Practical 18 : Write a program to implement Exception handling
+
+Practical 19 : Write a Program to implement multithreaded program
+
+Practical 20 : Write a program to copy the contents of input file into output file using FileInputStream & FileOutputStream classes;
